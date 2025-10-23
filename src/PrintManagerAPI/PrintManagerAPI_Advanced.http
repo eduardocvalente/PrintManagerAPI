@@ -1,0 +1,112 @@
+### Teste Básico de Impressão
+POST https://localhost:7031/print
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "Teste básico de impressão",
+  "settings": {
+    "fontSize": 12,
+    "fontName": "Arial",
+    "alignment": "Left"
+  }
+}
+
+### Teste de Impressão Centralizada
+POST https://localhost:7031/print/advanced
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "TEXTO CENTRALIZADO\n\nEste texto aparecerá centralizado na página\nCom uma fonte maior e formatação especial",
+  "settings": {
+    "fontName": "Arial",
+    "fontSize": 18,
+    "alignment": "Center",
+    "bold": true,
+    "italic": false,
+    "underline": false,
+    "paperSize": "A4",
+    "orientation": "Portrait",
+    "margins": {
+      "top": 100,
+      "bottom": 100,
+      "left": 50,
+      "right": 50
+    },
+    "lineSpacing": 1.5,
+    "fitToPage": false,
+    "wrapText": true
+  }
+}
+
+### Teste de Impressão com Fonte Personalizada
+POST https://localhost:7031/print/advanced
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "RELATÓRIO ESPECIAL\n\nEste documento foi formatado com:\n- Fonte Times New Roman\n- Tamanho 16\n- Alinhamento à direita\n- Texto em itálico\n- Espaçamento de linha 2.0",
+  "settings": {
+    "fontName": "Times New Roman",
+    "fontSize": 16,
+    "alignment": "Right",
+    "bold": false,
+    "italic": true,
+    "underline": false,
+    "paperSize": "A4",
+    "orientation": "Portrait",
+    "margins": {
+      "top": 80,
+      "bottom": 80,
+      "left": 80,
+      "right": 80
+    },
+    "lineSpacing": 2.0,
+    "fitToPage": true,
+    "wrapText": true
+  }
+}
+
+### Teste de Impressão Justificada
+POST https://localhost:7031/print/advanced
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "settings": {
+    "fontName": "Calibri",
+    "fontSize": 12,
+    "alignment": "Justify",
+    "bold": false,
+    "italic": false,
+    "underline": false,
+    "paperSize": "A4",
+    "orientation": "Portrait",
+    "margins": {
+      "top": 50,
+      "bottom": 50,
+      "left": 50,
+      "right": 50
+    },
+    "lineSpacing": 1.2,
+    "fitToPage": true,
+    "wrapText": true
+  }
+}
+
+### Listar Impressoras
+GET https://localhost:7031/printers
+
+### Listar Impressoras com Detalhes
+GET https://localhost:7031/printers/detailed
+
+### Obter Info de Impressora Específica
+GET https://localhost:7031/printers/Microsoft Print to PDF/info
+
+### Status da Fila
+GET https://localhost:7031/queue/status
+
+### Health Check
+GET https://localhost:7031/health

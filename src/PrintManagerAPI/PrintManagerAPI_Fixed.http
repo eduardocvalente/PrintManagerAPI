@@ -1,0 +1,75 @@
+### Teste de Impressão Avançada Funcional - Impressora Térmica
+POST http://localhost:5094/print/advanced
+Content-Type: application/json
+
+{
+  "printerName": "POS-58C (copy 2)",
+  "text": "Cupom Fiscal\nPedido nº 45678\nData: 09/07/2025\nCliente: Maria Oliveira\nValor: R$ 123,45\nObrigado pela preferência!",
+  "settings": {
+    "fontName": "Courier New",
+    "fontSize": 9,
+    "fontStyle": 0,
+    "alignment": 1,
+    "bold": true,
+    "italic": false,
+    "underline": false,
+    "paperSize": 6,
+    "orientation": 0,
+    "margins": {
+      "top": 3,
+      "bottom": 3,
+      "left": 5,
+      "right": 5
+    },
+    "textColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    },
+    "lineSpacing": 1.0,
+    "fitToPage": true,
+    "wrapText": true,
+    "maxLinesPerPage": 40
+  }
+}
+
+### Teste de Impressão Avançada - Papel A4
+POST http://localhost:5094/print/advanced
+Content-Type: application/json
+
+{
+  "printerName": "POS-58C (copy 2)",
+  "text": "Cupom Fiscal\nPedido nº 45678\nData: 09/07/2025\nCliente: Maria Oliveira\nValor: R$ 123,45\nObrigado pela preferência!",
+  "settings": {
+    "fontName": "Arial",
+    "fontSize": 12,
+    "fontStyle": 0,
+    "alignment": 1,
+    "bold": true,
+    "italic": false,
+    "underline": false,
+    "paperSize": 0,
+    "orientation": 0,
+    "margins": {
+      "top": 50,
+      "bottom": 50,
+      "left": 50,
+      "right": 50
+    },
+    "textColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    },
+    "lineSpacing": 1.0,
+    "fitToPage": true,
+    "wrapText": true,
+    "maxLinesPerPage": 0
+  }
+}
+
+### Listar Impressoras
+GET http://localhost:5094/printers
+
+### Status da Fila
+GET http://localhost:5094/queue/status
