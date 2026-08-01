@@ -1,0 +1,4 @@
+# Convenções específicas de projetos de teste
+[*.cs]
+# Underscores em nomes de teste são idiomáticos (padrão xUnit/NUnit).
+dotnet_diagnostic.CA1707.severity = none

@@ -1,0 +1,56 @@
+@host = http://localhost:5094
+
+### Health check (readiness — inclui verificação do spooler)
+GET {{host}}/health
+
+### Liveness (apenas o processo)
+GET {{host}}/health/live
+
+### Listar impressoras
+GET {{host}}/printers
+
+### Listar impressoras com detalhes
+GET {{host}}/printers/detailed
+
+### Informações de uma impressora específica
+GET {{host}}/printers/Microsoft Print to PDF/info
+
+### Status da fila
+GET {{host}}/queue/status
+
+### Impressão simples (retorna 202 + jobId)
+POST {{host}}/print
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "Teste básico de impressão",
+  "settings": {
+    "fontSize": 12,
+    "fontName": "Arial",
+    "alignment": "Left"
+  }
+}
+
+### Impressão com formatação completa
+POST {{host}}/print
+Content-Type: application/json
+
+{
+  "printerName": "Microsoft Print to PDF",
+  "text": "TEXTO CENTRALIZADO\n\nEste texto aparecerá centralizado na página",
+  "settings": {
+    "fontName": "Times New Roman",
+    "fontSize": 18,
+    "alignment": "Center",
+    "bold": true,
+    "paperSize": "A4",
+    "orientation": "Portrait",
+    "margins": { "top": 100, "bottom": 100, "left": 50, "right": 50 },
+    "textColor": { "r": 0, "g": 0, "b": 0 },
+    "fitToPage": true
+  }
+}
+
+### Consultar status de um job (substitua pelo jobId retornado no 202)
+GET {{host}}/print/00000000-0000-0000-0000-000000000000

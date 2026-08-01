@@ -1,0 +1,19 @@
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+
+# LoggerMessage source-gen (CA1848/CA1873) é otimização de hot path;
+# desproporcional para o volume de logs desta API. Mantido como sugestão.
+dotnet_diagnostic.CA1848.severity = suggestion
+dotnet_diagnostic.CA1873.severity = suggestion
+
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
